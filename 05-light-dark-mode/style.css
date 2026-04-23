@@ -24,6 +24,7 @@
 
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -44,11 +45,13 @@ section {
 }
 
 h1 {
+  font-family: kaushan script, sans-serif;
   font-size: 100px;
   margin-bottom: 0;
 }
 
 h2 {
+  color: var(--on-background-alt);
   font-size: 32px;
   font-weight: normal;
 }
@@ -57,6 +60,7 @@ h2 {
 nav {
   z-index: 10;
   position: fixed;
+  font-family: Oswald, sans-serif;
   font-size: 24px;
   letter-spacing: 3px;
   padding: 25px;
