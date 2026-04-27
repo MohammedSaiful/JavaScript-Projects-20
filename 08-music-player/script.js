@@ -10,6 +10,9 @@ const nextBtn = document.getElementById('next');
 const progressContainer = document.getElementById('progress-container');
 const progress = document.getElementById('progress');
 
+const currentTimeEl = document.getElementById('current-time');
+const durationEl = document.getElementById('duration');
+
 // check if playing
 let isPlaying = false;
 
@@ -70,7 +73,6 @@ function loadSong(song) {
 
 let songIndex = 0;
 // onload 1st song
-loadSong(songs[songIndex]);
 
 function prevSong() {
     songIndex--;
@@ -91,15 +93,44 @@ function nextSong() {
 }
 
 // update progress bar and time
-function updateProgressBar(e) {   
+function updateProgressBar(e) {
     if (isPlaying) {
         // console.log(e);
-        const {duration, currentTime} = e.srcElement; //destructuring
+        const { duration, currentTime } = e.srcElement; //destructuring
 
         // update progress bar width
-        const progressPercent = (currentTime/duration) * 100;
+        const progressPercent = (currentTime / duration) * 100;
         // console.log(progressPercent);
         progress.style.width = `${progressPercent}%`;
+
+
+        // calculate display for duration
+        const durationMinutes = Math.floor(duration / 60);
+        // console.log('minutes',durationMinutes);
+        let durationSeconds = Math.floor(duration % 60);
+        // console.log('seconds',durationSeconds);
+
+        if (durationSeconds < 10) {
+            durationSeconds = `0${durationSeconds}`;
+        }
+        // console.log(`${durationMinutes}:${durationSeconds}`);
+
+
+        // delay switching duration element to avoid NaN
+        if (durationSeconds) {
+            durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
+        }
+
+
+        // calculate display for current
+        const currentMinutes = Math.floor(currentTime / 60);
+        let currentSeconds = Math.floor(currentTime % 60);
+        if (currentSeconds < 10) {
+            currentSeconds = `0${currentSeconds}`;
+        }
+        currentTimeEl.textContent = `${currentMinutes}:${currentSeconds}`;
+
+
     }
 }
 
