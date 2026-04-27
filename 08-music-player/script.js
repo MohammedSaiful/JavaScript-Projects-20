@@ -134,8 +134,23 @@ function updateProgressBar(e) {
     }
 }
 
+
+
+
+function setProgressBar(e) {
+    // if use this.clientWidth instead of e.srcElement.clientWidth it will work too because we are adding event listener to progressContainer element and this will refer to progressContainer element same thing
+    const width = e.srcElement.clientWidth;
+    // console.log(width);
+    const clickX = e.offsetX;
+    // console.log(clickX);
+    const { duration } = music;
+    music.currentTime = (clickX / width) * duration;
+}
+
 // event listeners for previous and next
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
+music.addEventListener('ended', nextSong);
 
 music.addEventListener('timeupdate', updateProgressBar); //progress
+progressContainer.addEventListener('click', setProgressBar); //set progress bar
