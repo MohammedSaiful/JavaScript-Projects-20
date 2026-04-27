@@ -69,3 +69,26 @@ function loadSong(song) {
 
 let songIndex = 0;
 loadSong(songs[songIndex]);
+
+function prevSong() {
+    songIndex--;
+    if (songIndex < 0) {
+        songIndex = songs.length - 1;
+    }
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+function nextSong() {
+    songIndex++;
+    if (songIndex > songs.length - 1) {
+        songIndex = 0;
+    }
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+
+// event listeners for previous and next
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
