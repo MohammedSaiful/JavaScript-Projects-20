@@ -7,7 +7,8 @@ const prevBtn = document.getElementById('prev');
 const playBtn = document.getElementById('play');
 const nextBtn = document.getElementById('next');
 
-
+const progressContainer = document.getElementById('progress-container');
+const progress = document.getElementById('progress');
 
 // check if playing
 let isPlaying = false;
@@ -68,6 +69,7 @@ function loadSong(song) {
 }
 
 let songIndex = 0;
+// onload 1st song
 loadSong(songs[songIndex]);
 
 function prevSong() {
@@ -88,7 +90,21 @@ function nextSong() {
     playSong();
 }
 
+// update progress bar and time
+function updateProgressBar(e) {   
+    if (isPlaying) {
+        // console.log(e);
+        const {duration, currentTime} = e.srcElement; //destructuring
+
+        // update progress bar width
+        const progressPercent = (currentTime/duration) * 100;
+        // console.log(progressPercent);
+        progress.style.width = `${progressPercent}%`;
+    }
+}
 
 // event listeners for previous and next
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
+
+music.addEventListener('timeupdate', updateProgressBar); //progress
