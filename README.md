@@ -12,3 +12,4 @@
 - **[05 Light Dark mode](https://light-dark-mode-black.vercel.app/)**
 - **[06 Animation](https://animation-flax-three.vercel.app/)**
 - **[07 Navigation Nation](https://navigation-nation-rose.vercel.app/)**
+- **[08 Music](https://music-beta-orcin.vercel.app/)**
