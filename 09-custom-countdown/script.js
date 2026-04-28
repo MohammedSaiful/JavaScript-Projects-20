@@ -48,7 +48,7 @@ function updateDOM() {
 
 // take values from form input
 function updateCountdown(e) {
-    e.preventDefault(); // prevents refreshing the page when submit the form
+    e.preventDefault(); // prevents refresh the page when submit the form
     // console.log(e);
     countdownTitle = e.srcElement[0].value;
     countdownDate = e.srcElement[1].value;
@@ -58,7 +58,7 @@ function updateCountdown(e) {
     };
 
 
-    // get number verson of current Date, update DOM
+    // get number version of current Date, update DOM
     countdownValue = new Date(countdownDate).getTime();  // milliseconds since Jan 1, 1970
     updateDOM();
 }
